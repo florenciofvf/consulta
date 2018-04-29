@@ -2,6 +2,7 @@ package br.com.consulta.comp;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Objects;
 
 import javax.swing.JTree;
 import javax.swing.tree.TreeModel;
@@ -18,6 +19,7 @@ public class Arvore extends JTree {
 		super(newModel);
 		getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		putClientProperty("JTree.lineStyle", "Horizontal");
+		Objects.requireNonNull(arvoreListener, "Arvore");
 		this.arvoreListener = arvoreListener;
 		addMouseListener(new OuvinteArvore());
 	}
@@ -40,7 +42,7 @@ public class Arvore extends JTree {
 					return;
 				}
 
-				if (ultimoSelecionado != selecionado && arvoreListener != null) {
+				if (ultimoSelecionado != selecionado) {
 					ultimoSelecionado = selecionado;
 					arvoreListener.selecionado(selecionado);
 				}

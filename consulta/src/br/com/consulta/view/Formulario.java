@@ -9,8 +9,10 @@ import javax.swing.JFrame;
 
 import br.com.consulta.Tabelas;
 import br.com.consulta.banco.Conexao;
+import br.com.consulta.banco.MetaDados;
 import br.com.consulta.comp.SplitPane;
 import br.com.consulta.util.Constantes;
+import br.com.consulta.util.Util;
 import br.com.consulta.xml.XML;
 
 public class Formulario extends JFrame {
@@ -22,9 +24,8 @@ public class Formulario extends JFrame {
 		super(Constantes.CONSULTA);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		Tabelas tabelas = XML.processar(file);
-		ficharioLateral = new FicharioLateral(tabelas);
+		ficharioLateral = new FicharioLateral();
 		ficharioRegistros = new FicharioRegistros();
-		ficharioLateral.atualizarMetaDados();
 		setSize(500, 500);
 		montarLayout();
 		eventos();
@@ -50,5 +51,14 @@ public class Formulario extends JFrame {
 		splitPane.setRightComponent(ficharioRegistros);
 
 		add(BorderLayout.CENTER, splitPane);
+	}
+
+	public void atualizarMetaDados() {
+//		try {
+//			MetaDados.atualizarMetaDados(tabelas, progresso);
+//		} catch (Exception ex) {
+//			String msg = Util.getStackTrace(getClass().getName() + ".atualizarTotalRegistros()", ex);
+//			Util.mensagem(this, msg);
+//		}
 	}
 }
