@@ -1,8 +1,5 @@
 package br.com.consulta.util;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import br.com.consulta.Tabela;
 import br.com.consulta.Tabelas;
 
@@ -10,81 +7,81 @@ public class ArvoreUtil {
 	private ArvoreUtil() {
 	}
 
-	public static List<Tabela> tabelasDestaques(Tabelas tabelas) {
-		List<Tabela> listagem = new ArrayList<>();
+	public static Tabelas tabelasDestaques(Tabelas tabelas) {
+		Tabelas resposta = new Tabelas();
 
 		for (int i = 0; i < tabelas.getChildCount(); i++) {
 			Tabela tabela = tabelas.getTabela(i);
 			if (tabela.isDestaque()) {
-				listagem.add(tabela);
+				resposta.add(tabela);
 			}
 		}
 
-		return listagem;
+		return resposta;
 	}
 
-	public static List<Tabela> tabelasComRegistros(Tabelas tabelas) {
-		List<Tabela> listagem = new ArrayList<>();
+	public static Tabelas tabelasComRegistros(Tabelas tabelas) {
+		Tabelas resposta = new Tabelas();
 
 		for (int i = 0; i < tabelas.getChildCount(); i++) {
 			Tabela tabela = tabelas.getTabela(i);
 			if (tabela.getRegistros() > 0) {
-				listagem.add(tabela);
+				resposta.add(tabela);
 			}
 		}
 
-		return listagem;
+		return resposta;
 	}
 
-	public static List<Tabela> tabelasSemRegistros(Tabelas tabelas) {
-		List<Tabela> listagem = new ArrayList<>();
+	public static Tabelas tabelasSemRegistros(Tabelas tabelas) {
+		Tabelas resposta = new Tabelas();
 
 		for (int i = 0; i < tabelas.getChildCount(); i++) {
 			Tabela tabela = tabelas.getTabela(i);
 			if (tabela.getRegistros() == 0) {
-				listagem.add(tabela);
+				resposta.add(tabela);
 			}
 		}
 
-		return listagem;
+		return resposta;
 	}
 
-	public static List<Tabela> tabelasDuasFK(Tabelas tabelas) {
-		List<Tabela> listagem = new ArrayList<>();
+	public static Tabelas tabelasDuasFK(Tabelas tabelas) {
+		Tabelas resposta = new Tabelas();
 
 		for (int i = 0; i < tabelas.getChildCount(); i++) {
 			Tabela tabela = tabelas.getTabela(i);
 			if (tabela.getCountFK() == 2) {
-				listagem.add(tabela);
+				resposta.add(tabela);
 			}
 		}
 
-		return listagem;
+		return resposta;
 	}
 
-	public static List<Tabela> tabelasMultiplasFK(Tabelas tabelas) {
-		List<Tabela> listagem = new ArrayList<>();
+	public static Tabelas tabelasMultiplasFK(Tabelas tabelas) {
+		Tabelas resposta = new Tabelas();
 
 		for (int i = 0; i < tabelas.getChildCount(); i++) {
 			Tabela tabela = tabelas.getTabela(i);
 			if (tabela.getCountFK() > 2) {
-				listagem.add(tabela);
+				resposta.add(tabela);
 			}
 		}
 
-		return listagem;
+		return resposta;
 	}
 
-	public static List<Tabela> tabelasChavesCompostas(Tabelas tabelas) {
-		List<Tabela> listagem = new ArrayList<>();
+	public static Tabelas tabelasChavesCompostas(Tabelas tabelas) {
+		Tabelas resposta = new Tabelas();
 
 		for (int i = 0; i < tabelas.getChildCount(); i++) {
 			Tabela tabela = tabelas.getTabela(i);
 			if (tabela.getCountPK() > 1) {
-				listagem.add(tabela);
+				resposta.add(tabela);
 			}
 		}
 
-		return listagem;
+		return resposta;
 	}
 }
