@@ -62,10 +62,12 @@ class XMLHandler extends DefaultHandler {
 
 		} else if (Constantes.TABELA.equals(qName)) {
 			String destaque = attributes.getValue(Constantes.DESTAQUE);
+			String icone = attributes.getValue(Constantes.ICONE);
 			String nome = attributes.getValue(Constantes.NOME);
 
 			Tabela tabela = new Tabela(nome);
 			tabela.setDestaque(Boolean.parseBoolean(destaque));
+			tabela.setIcone(icone);
 
 			if (!(selecionado instanceof Tabelas)) {
 				throw new IllegalStateException("O ELEMENTO " + Constantes.TABELA + " DEVE ESTAR DENTRO DO ELEMENTO "
@@ -78,7 +80,9 @@ class XMLHandler extends DefaultHandler {
 
 		} else if (Constantes.CONSULTA.equals(qName)) {
 			String resumo = attributes.getValue(Constantes.RESUMO);
+			String icone = attributes.getValue(Constantes.ICONE);
 			Consulta consulta = new Consulta(resumo);
+			consulta.setIcone(icone);
 
 			if (selecionado instanceof Tabela) {
 				((Tabela) selecionado).add(consulta);
